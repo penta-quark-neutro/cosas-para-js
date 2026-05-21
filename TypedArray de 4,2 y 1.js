@@ -16,7 +16,7 @@ static from(iter){let i=0,k=new Uint4Array(iter.length);while(i<iter.length){k.a
 get buffer(){return this.mem.buffer}
 get byteLength(){return this.mem.byteLength}
 get length(){return this.mem.length*2}
-*[Symbol.toStringTag](){return 'Uint4Array'}
+get [Symbol.toStringTag](){return 'Uint4Array'}
 *[Symbol.iterator](){let i=0;while(i<this.length){yield (this.mem[i>>1]>>(4-4*(i++%2)))&0b1111}}
 
 //funciones que tendra heredadas a lo creado
@@ -32,7 +32,7 @@ random(){if(this.mem.length<=2**16){crypto.getRandomValues(this.mem)}else{
 	let i=0;while(i<=Math.ceil(this.mem.length/(2**16))){crypto.getRandomValues(this.mem.subarray((2**16)*i,(2**16)*(1+(i++))))}}}
 toHex(){return this.mem.toHex()}//junto a la base64 son bastante seguras de usar
 toBase64(){return this.mem.toBase64()}
-toString(){let i=1,cad=this.pos(0);while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
+toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
 map(funcion){let i=0,resul=new Uint4Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?parseFloat(inicio):this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 subarray(inicio,fin){inicio=(!isNaN(inicio)?parseInt(inicio):0),fin=(!isNaN(fin)?parseInt(fin):this.length);if(!(inicio%2==0&&fin%2==0)){throw new Error('Los argumentos deben ser un multiplo de 2')}
@@ -56,7 +56,7 @@ static from(iter){let i=0,k=new Uint2Array(iter.length);while(i<iter.length){k.a
 get buffer(){return this.mem.buffer}
 get byteLength(){return this.mem.byteLength}
 get length(){return this.mem.length*4}
-*[Symbol.toStringTag](){return 'Uint2Array'}
+get [Symbol.toStringTag](){return 'Uint2Array'}
 *[Symbol.iterator](){let i=0;while(i<this.length){yield (this.mem[i>>2]>>(6-2*(i++%4)))&0b0011}}
 
 //funciones que tendra heredadas a lo creado
@@ -71,7 +71,7 @@ random(){if(this.mem.length<=2**16){crypto.getRandomValues(this.mem)}else{
 	let i=0;while(i<=Math.ceil(this.mem.length/(2**16))){crypto.getRandomValues(this.mem.subarray((2**16)*i,(2**16)*(1+(i++))))}}}
 toHex(){return this.mem.toHex()}
 toBase64(){return this.mem.toBase64()}
-toString(){let i=1,cad=this.pos(0);while(i<this.length){cad+=(','+this.pos(i++))}return cad;}//buu, repetido
+toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(','+this.pos(i++))}return cad;}//buu, repetido
 map(funcion){let i=0,resul=new Uint2Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}//basicamente lo mismo otra vez
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?parseFloat(inicio):this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 subarray(inicio,fin){inicio=(!isNaN(inicio)?parseInt(inicio):0),fin=(!isNaN(fin)?parseInt(fin):this.length);if(!(inicio%4==0&&fin%4==0)){throw new Error('Los argumentos deben ser un multiplo de 4')}
@@ -95,7 +95,7 @@ static from(iter){let i=0,k=new Uint1Array(iter.length);while(i<iter.length){k.a
 get buffer(){return this.mem.buffer}
 get byteLength(){return this.mem.byteLength}
 get length(){return this.mem.length*8}
-*[Symbol.toStringTag](){return 'Uint1Array'}
+get [Symbol.toStringTag](){return 'Uint1Array'}
 *[Symbol.iterator](){let i=0;while(i<this.length){yield (this.mem[i>>3]>>(7-(i++%8)))&1}}
 
 //funciones que tendra heredadas a lo creado
@@ -110,7 +110,7 @@ random(){if(this.mem.length<=2**16){crypto.getRandomValues(this.mem)}else{
 	let i=0;while(i<=Math.ceil(this.mem.length/(2**16))){crypto.getRandomValues(this.mem.subarray((2**16)*i,(2**16)*(1+(i++))))}}}
 toHex(){return this.mem.toHex()}
 toBase64(){return this.mem.toBase64()}
-toString(){let i=1,cad=this.pos(0);while(i<this.length){cad+=(''+this.pos(i++))}return cad;}
+toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(''+this.pos(i++))}return cad;}
 map(funcion){let i=0,resul=new Uint1Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?parseFloat(inicio):this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 subarray(inicio,fin){inicio=(!isNaN(inicio)?parseInt(inicio):0),fin=(!isNaN(fin)?parseInt(fin):this.length);if(!(inicio%8==0&&fin%8==0)){throw new Error('Los argumentos deben ser un multiplo de 8')}
@@ -134,7 +134,7 @@ static from(iter){let i=0,k=new Int4Array(iter.length);while(i<iter.length){k.as
 get buffer(){return this.mem.buffer}
 get byteLength(){return this.mem.byteLength}
 get length(){return this.mem.length*2}
-*[Symbol.toStringTag](){return 'Int4Array'}
+get [Symbol.toStringTag](){return 'Int4Array'}
 *[Symbol.iterator](){let i=0,no;while(i<this.length){no=(this.mem[i>>1]>>(4-4*(i++%2)))&0b1111;yield (no&0b0111)*(1-2*(no>>3))}}
 
 //funciones que tendra heredadas a lo creado
@@ -149,7 +149,7 @@ random(){if(this.mem.length<=2**16){crypto.getRandomValues(this.mem)}else{
 	let i=0;while(i<=Math.ceil(this.mem.length/(2**16))){crypto.getRandomValues(this.mem.subarray((2**16)*i,(2**16)*(1+(i++))))}}}
 toHex(){return this.mem.toHex()}
 toBase64(){return this.mem.toBase64()}
-toString(){let i=1,cad=this.pos(0);while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
+toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
 map(funcion){let i=0,resul=new Int4Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?parseFloat(inicio):this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 subarray(inicio,fin){inicio=(!isNaN(inicio)?parseInt(inicio):0),fin=(!isNaN(fin)?parseInt(fin):this.length);if(!(inicio%2==0&&fin%2==0)){throw new Error('Los argumentos deben ser un multiplo de 2')}
@@ -173,7 +173,7 @@ static from(iter){let i=0,k=new Int2Array(iter.length);while(i<iter.length){k.as
 get buffer(){return this.mem.buffer}
 get byteLength(){return this.mem.byteLength}
 get length(){return this.mem.length*2}
-*[Symbol.toStringTag](){return 'Int2Array'}
+get [Symbol.toStringTag](){return 'Int2Array'}
 *[Symbol.iterator](){let i=0,no;while(i<this.length){no=(this.mem[i>>2]>>(6-2*(i++%4)))&0b11;yield (no&1)*(1-2*(no>>1))}}
 
 //funciones que tendra heredadas a lo creado
@@ -188,7 +188,7 @@ random(){if(this.mem.length<=2**16){crypto.getRandomValues(this.mem)}else{
 	let i=0;while(i<=Math.ceil(this.mem.length/(2**16))){crypto.getRandomValues(this.mem.subarray((2**16)*i,(2**16)*(1+(i++))))}}}
 toHex(){return this.mem.toHex()}
 toBase64(){return this.mem.toBase64()}
-toString(){let i=1,cad=this.pos(0);while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
+toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(','+this.pos(i++))}return cad;}
 map(funcion){let i=0,resul=new Int2Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?parseFloat(inicio):this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 subarray(inicio,fin){inicio=(!isNaN(inicio)?parseInt(inicio):0),fin=(!isNaN(fin)?parseInt(fin):this.length);if(!(inicio%2==0&&fin%2==0)){throw new Error('Los argumentos deben ser un multiplo de 2')}
