@@ -52,6 +52,7 @@ es una ampliacion que para añadir:
 * BigUint256Array
 * BigUint512Array
 * BigUint1024Array
+
 no son directamente TypedArrays, pero pueden ser utiles bajo ciertas condiciones.
 ### TypedArray 4,2 y 1
 añade una ampliacion como lo anterior.
