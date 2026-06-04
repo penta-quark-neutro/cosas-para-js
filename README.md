@@ -43,7 +43,7 @@ lo maneja en 3 modalidades:
 * el primer vector dado es modificado
 opera con vectores de tamaño 16, donde seria [e0,e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15]
 debo apuntar que el algoritmo de multiplicacion no es el mas optimo, y la divicion no se introdujo por ser un algebra con
-un espacio no normado, por lo qeu no aplique la definicion para dividir que depende de la norma.
+un espacio no normado, por lo que no aplique la definicion para dividir que depende de la norma.
 ### Rotador de vectores R3
 rota vectores R3 de una lista
 ### TypedArray +128
@@ -60,7 +60,7 @@ añade una ampliacion como lo anterior.
 * Uint4Array, Uint2Array y Uint1Array, funcionan normalmente
 * Int4Array e Int2Array, no usan complemento a 2, por lo que son simetricos a valores negativos y positivos
 
-### TypedArray 24,40,48,65
+### TypedArray 24,40,48,56
 añade una ampliacion como lo anterior.
 * Uint24Array, Uint40Array, Uint48Array, BigUint56Array
 * Int24Array, Int40Array, Int48Array, BigInt56Array
