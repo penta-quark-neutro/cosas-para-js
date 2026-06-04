@@ -52,12 +52,19 @@ es una ampliacion que para añadir:
 * BigUint256Array
 * BigUint512Array
 * BigUint1024Array
+* BigUint2048Array
 
 no son directamente TypedArrays, pero pueden ser utiles bajo ciertas condiciones.
 ### TypedArray 4,2 y 1
 añade una ampliacion como lo anterior.
 * Uint4Array, Uint2Array y Uint1Array, funcionan normalmente
 * Int4Array e Int2Array, no usan complemento a 2, por lo que son simetricos a valores negativos y positivos
+
+### TypedArray 24,40,48,65
+añade una ampliacion como lo anterior.
+* Uint24Array, Uint40Array, Uint48Array, BigUint56Array
+* Int24Array, Int40Array, Int48Array, BigInt56Array
+
 ### cadena de markov
 añade clases, para ejecutar cadenas de markov.
 son basicas por el momento.
