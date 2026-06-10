@@ -176,7 +176,7 @@ toString(){let i=1,cad=this.pos(0).toString();while(i<this.length){cad+=(','+thi
 map(funcion){let i=0,resul=new Int24Array(this.length);while(i<this.length){resul.asig(i,funcion(this.pos(i),i++,this))}return resul;}
 reduce(funcion,inicio){let i=0,cumulo=(!isNaN(inicio)?inicio:this.pos(i++));while(i<this.length){cumulo=funcion(cumulo,this.pos(i),i++,this)}return cumulo;}
 }
-class Uint40Array{//hecho por el pentaquark neutro y neutral auream
+class Int40Array{//hecho por el pentaquark neutro y neutral auream
 	constructor(a) {
 		if (a instanceof ArrayBuffer){if(a.byteLength%5==0){this.mem=new Uint8Array(a)}else{throw new Error('el ArrayBuffer debe tener un byteLength multiplo de 5',{cause:'byteLength:'+a.byteLength})}}
 		else{if(typeof(a)=='number'){this.mem=new Uint8Array(a*5)}
